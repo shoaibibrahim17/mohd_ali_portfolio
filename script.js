@@ -1,21 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Intersection Observer for section animations
-    const sections = document.querySelectorAll('.section');
+    // Intersection Observer for Premium Scroll Reveal
+    const revealElements = document.querySelectorAll('.section, .card');
     const observerOptions = {
-        threshold: 0.1,
+        threshold: 0.15,
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const sectionObserver = new IntersectionObserver((entries) => {
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                const target = entry.target;
+                target.classList.add('revealed');
+                
+                // Add scan-line sweep effect to cards specifically
+                if (target.classList.contains('card')) {
+                    target.classList.add('scan-reveal');
+                }
+                
+                // Stop observing once revealed for performance
+                revealObserver.unobserve(target);
             }
         });
     }, observerOptions);
 
-    sections.forEach(section => {
-        sectionObserver.observe(section);
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
     });
 
     // Mobile Navigation Toggle
