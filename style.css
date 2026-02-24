@@ -381,11 +381,14 @@ body.nav-open .nav-mobile-container {
 }
 
 @keyframes statusPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
         transform: scale(1);
         box-shadow: 0 0 8px var(--primary);
     }
+
     50% {
         opacity: 0.5;
         transform: scale(1.2);
@@ -490,17 +493,28 @@ body.nav-open .nav-mobile-container {
 .card li {
     font-size: 0.9rem;
     color: var(--muted);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     position: relative;
-    padding-left: 1.2rem;
+    padding-left: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
 }
 
 .card li::before {
-    content: ">";
-    position: absolute;
-    left: 0;
+    content: "▹";
     color: var(--primary);
     font-weight: bold;
+    font-size: 1.1em;
+    margin-top: -1px;
+}
+
+.card li strong {
+    color: var(--text);
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.02em;
 }
 
 /* TIMELINE */
