@@ -517,6 +517,10 @@ body.nav-open .nav-mobile-container {
     letter-spacing: 0.02em;
 }
 
+.card li div {
+    flex: 1;
+}
+
 /* TIMELINE */
 .timeline {
     border-left: 2px solid rgba(0, 245, 255, 0.2);
